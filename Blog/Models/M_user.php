@@ -3,7 +3,7 @@
 namespace Models;
 
 require_once 'Conexion.php';
-require_once 'Usuario.php';
+require_once 'User.php';
 
 class M_user extends Conexion
 {
@@ -22,21 +22,21 @@ class M_user extends Conexion
         return $usuario;
     }
 
-    public function insertUsuario(User $usuario)
+    public function insertUser(User $usuario)
     {
         $sentencia = parent::con()->prepare("INSERT INTO usuarios(id, name, lastname, username, email, password, image, status, kind, created_at) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
-        $sentencia->bind_param("issssssiis", $usuario->getUsername(), $usuario->getPassword(), $usuario->getNombre());
+        $sentencia->bind_param("issssssiis", $usuario->getId(), $usuario->getName(), $usuario->getLastname(), $usuario->getUsername(), $usuario->getEmail(), $usuario->getPassword(), $usuario->getImage(), $usuario->getStatus(), $usuario->getKind(), $usuario->getCreated_at());
 
         $sentencia->execute();
         $sentencia->close();
     }
 
-    public function deleteUsuario($username)
+    public function deleteUser($id)
     {
-        $sentencia = parent::con()->prepare("DELETE FROM alumnos WHERE username=?");
+        $sentencia = parent::con()->prepare("DELETE FROM alumnos WHERE id=?");
 
-        $sentencia->bind_param("s", $username);
+        $sentencia->bind_param("i", $id);
 
         $sentencia->execute();
         $sentencia->close();
