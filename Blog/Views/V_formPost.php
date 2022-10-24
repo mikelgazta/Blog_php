@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <form action="C_insertPost.php" method="post">
+    <form action="../C_insertPost.php" method="post">
+    	<input type="text" id="id" name="id" value="" readonly>
     	<input type="text" name="title" placeholder="title">
         <input type="text" name="brief" placeholder="brief">
         <input type="text" name="content" placeholder="content">
         <input type="text" name="image" placeholder="image">
-        <input type="text" name="created_at" placeholder="created_at">
+        <input type="text" id="created_at" name="created_at" value="" readonly>
         <input type="text" name="status" placeholder="status">
         <input type="text" name="user_id" placeholder="user_id">
         <input type="submit" value="Guardar">
