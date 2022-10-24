@@ -19,9 +19,9 @@ $con = new M_Post();
 
 $post = new Post( $id, $title, $brief, $content, $image, $created_at, $status, $user_id);
 
-$con->insertUsuario($post);
+$con->insertPost($post);
 $con->close();
 
-header("Location: C_verUsuarios.php");
+
 exit();
 ?>
