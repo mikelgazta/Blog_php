@@ -9,13 +9,13 @@ class M_Post extends Conexion
     public function getPosts(){
         $query = parent::con()->query('SELECT * FROM post');
         
-        $post = [];
+        $retorno = [];
         
         while($fila = $query->fetch_assoc()){
-            $post[] = new Post($fila['id'], $fila['title'], $fila['brief'], $fila['content'], $fila['image'], $fila['created_at'], $fila['status'], $fila['user_id']);
+            $retorno[] = $fila;
         }
         
-        return  $post;
+        return  $retorno;
     }
     
     public function deletePost($id){
