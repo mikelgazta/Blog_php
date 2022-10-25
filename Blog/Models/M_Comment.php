@@ -2,7 +2,7 @@
 namespace Models;
 
 require_once 'Conexion.php';
-require_once 'User.php';
+require_once 'Comment.php';
 
 class M_Comment extends Conexion
 {
