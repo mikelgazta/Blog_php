@@ -19,6 +19,7 @@ if (! isset($_SESSION['username'])) {
 	<br>
 	<br>
 	<br>
-	<button onclick="location.href='../System/C_Logout.php'">Logout</button>
+		<button onclick="location.href='../Views/V_InsertUser.php'">Crear Usuario</button>
+		<button onclick="location.href='../System/C_Logout.php'">Logout</button>
 </body>
 </html>
