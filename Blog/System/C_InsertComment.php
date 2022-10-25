@@ -2,8 +2,8 @@
 
 use Models\M_Comment;
 use Models\Comment;
-require_once 'Models/Usuario.php';
-require_once 'Models/M_Usuario.php';
+require_once '../Models/Comment.php';
+require_once '../Models/M_Comment.php';
 
 $id = $_POST['id'];
 $name = $_POST['name'];
@@ -19,7 +19,7 @@ $con = new M_Comment();
 
 $comment = new Comment($id, $name, $comment, $email, $post_id, $created_at, $status, );
 
-$con->insertUsuario($comment);
+$con->insertComment($comment);
 $con->close();
 
 header("Location: C_verUsuarios.php");
