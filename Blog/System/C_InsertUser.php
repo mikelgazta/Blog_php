@@ -23,6 +23,6 @@ $user = new User($id, $name, $lastname, $username, $email, $password, $image, $s
 $con->insertUser($user);
 $con->close();
 
-header("Location: ../Views/V_InsertUser.php");
+header("Location: ../Views/V_SelectUser.php");
 exit();
 ?>
