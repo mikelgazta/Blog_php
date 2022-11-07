@@ -20,6 +20,7 @@ if (! isset($_SESSION['username'])) {
 	<br>
 	<br>
 		<button onclick="location.href='../Views/V_SelectUser.php'">Crear Usuario</button>
+		<button onclick="location.href='../Views/V_InsertComment.php'">Crear Comentario</button>
 		<button onclick="location.href='../System/C_Logout.php'">Logout</button>
 </body>
 </html>
