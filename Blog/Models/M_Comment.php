@@ -29,4 +29,14 @@ class M_Comment extends Conexion
         $sentencia->execute();
         $sentencia->close();
     }
+    
+    public function deleteComment($id)
+    {
+        $sentencia = parent::con()->prepare("DELETE FROM comment WHERE id=?");
+        
+        $sentencia->bind_param("i", $id);
+        
+        $sentencia->execute();
+        $sentencia->close();
+    }
 }
