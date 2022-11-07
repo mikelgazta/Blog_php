@@ -10,21 +10,21 @@ class M_Comment extends Conexion
     {
         $query = parent::con()->query('SELECT * FROM comment');
         
-        $comment = [];
+        $comentario = [];
         
         while ($fila = $query->fetch_assoc()) {
             // todo
-            $comment[] = new Comment($fila['id'], $fila['name'], $fila['email'], $fila['post_id'], $fila['created_at'], $fila['status']);
+            $comentario[] = new Comment($fila['id'], $fila['name'], $fila['comment'], $fila['email'], $fila['post_id'], $fila['created_at'], $fila['status']);
         }
         
-        return $comment;
+        return $comentario;
     }
     
-    public function insertComment(Comment $comment)
+    public function insertComment(Comment $comentario)
     {
-        $sentencia = parent::con()->prepare("INSERT INTO comment(id, name, email, post_id, created_at, status) VALUES (?,?,?,?,?,?)");
+        $sentencia = parent::con()->prepare("INSERT INTO comment(name, comment, email, post_id, status) VALUES (?,?,?,?,?)");
         
-        $sentencia->bind_param("isssisi", $comment->getId(), $comment->getName(), $comment->getEmail(), $comment->getPost_id(), $comment->getCreated_at(), $comment->getStatus());
+        $sentencia->bind_param("sssii", $comentario->getName(), $comentario->getComment(), $comentario->getEmail(), $comentario->getPost_id(), $comentario->getStatus());
         
         $sentencia->execute();
         $sentencia->close();
