@@ -22,6 +22,6 @@ $comentario = new Comment($id, $name, $comment, $email, $post_id, $created_at, $
 $con->insertComment($comentario);
 $con->close();
 
-//header("Location: ../Views/V_SelectComment.php");
+//header("Location: ../Views/V_InsertComment.php");
 exit();
 ?>
