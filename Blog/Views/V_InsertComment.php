@@ -46,7 +46,7 @@ while ($row = $resultado->fetch_assoc()) {
 $mysqli->close();
 ?>
 	<br>
-	<a href="V_CommentForm.php" class="button">Crear Comentario</a>
+	<a href="V_formComment.php" class="button">Crear Comentario</a>
 	<a href="V_Dashboard.php" class="button">Volver</a>
 </body>
 </html>
