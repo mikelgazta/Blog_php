@@ -17,11 +17,11 @@ $status = $_POST['status'];
 
 $con = new M_Comment();
 
-$comment = new Comment($id, $name, $comment, $email, $post_id, $created_at, $status, );
+$comentario = new Comment($id, $name, $comment, $email, $post_id, $created_at, $status);
 
-$con->insertComment($comment);
+$con->insertComment($comentario);
 $con->close();
 
-header("Location: C_verUsuarios.php");
+//header("Location: ../Views/V_SelectComment.php");
 exit();
 ?>
