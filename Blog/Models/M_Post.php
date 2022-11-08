@@ -24,11 +24,19 @@ class M_Post extends Conexion{
     
     public function insertPost(Post $entrada)
     {
-//          var_dump($entrada);
-//          echo $entrada->getTitle();
         $sentencia = parent::con()->prepare("INSERT INTO post(title, brief, content, image, status, user_id) VALUES (?,?,?,?,?,?)");
         
         $sentencia->bind_param("ssssii",  $entrada->getTitle(), $entrada->getBrief(), $entrada->getContent(), $entrada->getImage(), $entrada->getStatus(), $entrada->getUser_id());
+        
+        $sentencia->execute();
+        $sentencia->close();
+    }
+    
+    public function updatePost(Post $entrada)
+    {
+        $sentencia = parent::con()->prepare("UPDATE post SET title=?, brief=?, content=?, image=?, status=?, user_id=? WHERE id=?");
+        
+        $sentencia->bind_param("ssssiii", $entrada->getTitle(), $entrada->getBrief(), $entrada->getContent(), $entrada->getImage(), $entrada->getStatus(), $entrada->getUser_id(), $entrada->getId());
         
         $sentencia->execute();
         $sentencia->close();
