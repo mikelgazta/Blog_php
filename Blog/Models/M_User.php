@@ -35,7 +35,7 @@ class M_User extends Conexion
     {
         $sentencia = parent::con()->prepare("UPDATE user SET name=?, lastname=?, username=?, email=?, password=?, image=?, status=?, kind=? WHERE id=?");
         
-        $sentencia->bind_param("ssssssiii",  $usuario->getName(), $usuario->getLastname(), $usuario->getUsername(), $usuario->getEmail(), $usuario->getPassword(), $usuario->getImage(), $usuario->getStatus(), $usuario->getKind());
+        $sentencia->bind_param("ssssssiii",  $usuario->getName(), $usuario->getLastname(), $usuario->getUsername(), $usuario->getEmail(), $usuario->getPassword(), $usuario->getImage(), $usuario->getStatus(), $usuario->getKind(), $usuario->getId());
         
         $sentencia->execute();
         $sentencia->close();
