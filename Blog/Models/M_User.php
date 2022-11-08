@@ -31,6 +31,15 @@ class M_User extends Conexion
         $sentencia->execute();
         $sentencia->close();
     }
+    public function updateUser(User $usuario)
+    {
+        $sentencia = parent::con()->prepare("UPDATE user SET name=?, lastname=?, username=?, email=?, password=?, image=?, status=?, kind=? WHERE id=?");
+        
+        $sentencia->bind_param("ssssssiii",  $usuario->getName(), $usuario->getLastname(), $usuario->getUsername(), $usuario->getEmail(), $usuario->getPassword(), $usuario->getImage(), $usuario->getStatus(), $usuario->getKind());
+        
+        $sentencia->execute();
+        $sentencia->close();
+    }
 
     public function deleteUser($id)
     {
