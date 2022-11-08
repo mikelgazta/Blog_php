@@ -1,4 +1,5 @@
 <?php
+namespace System;
 
 use Models\M_User;
 use Models\User;
