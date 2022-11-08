@@ -12,6 +12,9 @@
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
 }
+.escondido{
+    display: none;
+}
 </style>
 <body>
 <?php
@@ -45,8 +48,8 @@ if (isset($_GET['id'])) {
     }
 }
 ?>
-<form action=<?php echo (isset($_GET['id']) ? "update_test.php" : "../System/C_InsertUser.php") ?> method="post">
-		Id: <input type="number" name="id" readonly="readonly" value=<?php echo $id??''?>><br>
+<form action=<?php echo (isset($_GET['id']) ? "../System/C_UpdateUser.php" : "../System/C_InsertUser.php") ?> method="post">
+		<input type="text" class="escondido" name="id" readonly="readonly" value=<?php echo $id??''?>>
 		<br> Nombre: <input type="text" name="name" value=<?php echo $name??''?>><br>
 		<br> Apellidos: <input type="text" name="lastname" value=<?php echo $lastname??''?>><br>
 		<br> Usuario: <input type="text" name="username"  value=<?php echo $username??''?>><br>
@@ -55,9 +58,9 @@ if (isset($_GET['id'])) {
 		<br> Imagen: <input type="text" name="image" value=<?php echo $image??''?>><br>
 		<br> Estado: <input type="number" name="status" value=<?php echo $status??''?>><br>
 		<br> Tipo: <input type="number" name="kind" value=<?php echo $kind??''?>><br>
-		<br> Creado en: <input type="text" name="created_at" readonly="readonly" value=<?php echo $created_at??''?>><br>
+		<input type="number" class="escondido" name="created_at" readonly="readonly" value=<?php echo $created_at??''?>><br>
 		<br> <input type="submit" value="Enviar"> <input type="reset"
-			name="reset" id="reset"> <a href="V_InsertUser.php" class="button">Volver</a>
+			name="reset" id="reset"> <a href="V_SelectUser.php" class="button">Volver</a>
 	</form>
 
 </body>
