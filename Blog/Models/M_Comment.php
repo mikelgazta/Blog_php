@@ -30,6 +30,16 @@ class M_Comment extends Conexion
         $sentencia->close();
     }
     
+    public function updateComment(Comment $comentario)
+    {
+        $sentencia = parent::con()->prepare("UPDATE comment SET name=?, comment=?, email=?, status=? WHERE id=?");
+        
+        $sentencia->bind_param("sssii", $comentario->getName(), $comentario->getComment(), $comentario->getEmail(), $comentario->getStatus(), $comentario->getId());
+        
+        $sentencia->execute();
+        $sentencia->close();
+    }
+    
     public function deleteComment($id)
     {
         $sentencia = parent::con()->prepare("DELETE FROM comment WHERE id=?");

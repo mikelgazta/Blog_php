@@ -19,9 +19,9 @@ $con = new M_Comment();
 
 $comentario = new Comment($id, $name, $comment, $email, $post_id, $created_at, $status);
 
-$con->insertComment($comentario);
+$con->updateComment($comentario);
 $con->close();
 
-header("Location: ../Views/V_SelectComment.php");
+//header("Location: ../Views/V_SelectComment.php");
 exit();
 ?>

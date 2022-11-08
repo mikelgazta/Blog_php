@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
 		<br> Estado: <input type="number" name="status" value=<?php echo $status??''?>><br>
 		<br> Id usuario: <input type="number" name="user_id" value=<?php echo $user_id??''?>><br>
 		<br> <input type="submit" value="Enviar"> <input type="reset"
-			name="reset" id="reset"> <a href="V_InsertPost.php" class="button">Volver</a>
+			name="reset" id="reset"> <a href="V_SelectPost.php" class="button">Volver</a>
 	</form>
 
 </body>

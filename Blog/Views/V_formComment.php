@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
     /* Sentencia no preparada */
     $id = $_GET['id'];
 
-    $entrada = $mysqli->query("SELECT * FROM user WHERE id='$id'");
+    $entrada = $mysqli->query("SELECT * FROM comment WHERE id='$id'");
     
     while ($row = $entrada->fetch_assoc()) {
         $id=$row['id'];
@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 <form action=
-<?php echo (isset($_GET['id']) ? "'update_test.php'" : "'../System/C_InsertComment.php'")?> 
+<?php echo (isset($_GET['id']) ? "'../System/C_UpdateComment.php'" : "'../System/C_InsertComment.php'")?> 
 method="post">
 		ID: <input type="number" name="id" readonly="readonly" value=<?php echo $id??''?>><br>
 		<br> Name: <input type="text" name="name" value=<?php echo $name??''?>><br>
@@ -54,7 +54,7 @@ method="post">
 		<br> Status: <input type="text" name="status" value=<?php echo $status??''?>><br>
 		<br> <input type="submit" value="Enviar"> 
 		<input type="reset" name="reset" id="reset"> 
-		<a href="V_InsertComment.php" class="button">Volver</a>
+		<a href="V_SelectComment.php" class="button">Volver</a>
 	</form>
 
 </body>
