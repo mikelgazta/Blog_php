@@ -17,37 +17,48 @@ if (! isset($_SESSION['username'])) {
 ?>
 
 <html>
+<link rel="stylesheet" type="text/css" href="tableStyle.css">
+
 <style>
-.button {
-	font: 13px Arial;
-	text-decoration: none;
-	background-color: #EEEEEE;
-	color: #333333;
-	padding: 2px 6px 2px 6px;
-	border-top: 1px solid #CCCCCC;
-	border-right: 1px solid #333333;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #CCCCCC;
-}
 </style>
 <body>
-	<h1>Todos los alumnos:</h1>
-	<?php
-	echo ("ID" . " - " . "Titulo" . " - " . "Resumen" . " - " . "Contenido" . " - " . "Imagen" . " - " . "Creado en" . " - " . "Estado" . " - " . "ID usuario");
-	echo "<br><br>";
+	<h1 align="center">Todos los Posts:</h1>
 	
-while ($row = $resultado->fetch_assoc()) {
-    $id = $row['id'];
-    echo ($row['id'] . " - " . $row['title'] . " - " . $row['brief'] . " - " . $row['content'] . " - " . $row['image'] . " - " . $row['created_at'] . " - " . $row['status'] . " - " . $row['user_id'] . " <button onclick=\"location.href='../System/C_DeletePost.php?id=$id'\">Borrar</button> " . " <button onclick=\"location.href='V_formPost.php?id=$id'\">Editar</button>");
+    	<table class="styled-table">
+		<thead>	
+		<tr>
+			<td> <?php echo "ID"?></td>
+			<td> <?php echo "Titulo"?></td>
+			<td> <?php echo "Resumen"?></td>
+			<td> <?php echo "Contenido"?></td>
+			<td> <?php echo "Imagen"?></td>
+			<td> <?php echo "Creado en"?></td>
+			<td> <?php echo "Estado"?></td>
+			<td> <?php echo "Id Usuario"?></td>
+			<td><a href="V_formPost.php" class="button">Nuevo Post</a><p> </p> <a href="V_Dashboard.php" class="button">Volver</a></td>
 
-    // printf("%s - %s\n", $row["dni"], $row["nombre"], $row["apellidos"], $row["correo"], $row["telf"]);
-    echo "<br>";
-}
-$mysqli->close();
+		</tr>    		
+		</thead>
+		<tbody>
+			<tr>
+			<?php while ($row = $resultado->fetch_assoc()) {
+            $id = $row['id'];?>
+            
+				<td><?php echo $row['id']?></td>
+				<td><?php echo $row['title']?></td>
+				<td><?php echo $row['brief']?></td>
+				<td><?php echo $row['content']?></td>
+				<td><?php echo $row['image']?></td>
+				<td><?php echo $row['created_at']?></td>
+				<td><?php echo $row['status']?></td>
+				<td><?php echo $row['user_id']?></td>
+				<td><?php echo " <button onclick=\"location.href='../System/C_DeletePost.php?id=$id'\">Borrar</button> " . " <button onclick=\"location.href='V_formPost.php?id=$id'\">Editar</button>" ?></td>
+			</tr>
+			<?php }?>
+		</tbody>
+	</table>
+	<?php $mysqli->close();
 ?>
-	<br>
-	<a href="V_formPost.php" class="button">Crear Post</a>
-	<a href="V_Dashboard.php" class="button">Volver</a>
 </body>
 </html>
 

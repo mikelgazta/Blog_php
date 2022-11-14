@@ -1,9 +1,8 @@
 <?php
-
 session_start();
 if (! isset($_SESSION['username'])) {
     header("Location: V_loginform.php");
-}else {
+} else {
     $mysqli = new mysqli("localhost", "root", "", "proyecto_blog");
     if ($mysqli->connect_errno) {
         echo "Falló la conexión a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -17,37 +16,55 @@ if (! isset($_SESSION['username'])) {
 ?>
 
 <html>
+<link rel="stylesheet" type="text/css" href="tableStyle.css">
+
 <style>
-.button {
-	font: 13px Arial;
-	text-decoration: none;
-	background-color: #EEEEEE;
-	color: #333333;
-	padding: 2px 6px 2px 6px;
-	border-top: 1px solid #CCCCCC;
-	border-right: 1px solid #333333;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #CCCCCC;
-}
+
 </style>
 <body>
-	<h1>Todos los alumnos:</h1>
-	<?php
-	echo ("ID" . " - " . "Nombre" . " - " . "Apellido" . " - " . "Usuario" . " - " . "Correo" . " - " . "Contraseña" . " - " . "Imagen" . " - " . "Status" . " - " . "Tipo ".  " - "  . "Creado en");
-	echo "<br><br>";
+	<h1 align="center">Todos los Usuarios:</h1>
 	
-while ($row = $resultado->fetch_assoc()) {
-    $id = $row['id'];
-    echo ($row['id'] . " - " . $row['name'] . " - " . $row['lastname'] . " - " . $row['username'] . " - " . $row['email'] . " - " . $row['password'] . " - " . $row['image'] . " - " . $row['status'] . " - " . $row['kind'] . " - " . $row['created_at'] . " <button onclick=\"location.href='../System/C_DeleteUser.php?id=$id'\">Borrar</button> " . " <button onclick=\"location.href='V_formUser.php?id=$id'\">Editar</button>");
-
-    // printf("%s - %s\n", $row["dni"], $row["nombre"], $row["apellidos"], $row["correo"], $row["telf"]);
-    echo "<br>";
-}
-$mysqli->close();
-?>
-	<br>
-	<a href="V_formUser.php" class="button">Crear Usuario</a>
+    	<table class="styled-table">
+		<thead>	
+		<tr>
+			<td> <?php echo "ID"?></td>
+			<td> <?php echo "Nombre"?></td>
+			<td> <?php echo "Apellido"?></td>
+			<td> <?php echo "Usuario"?></td>
+			<td> <?php echo "Correo"?></td>
+			<td> <?php echo "Contraseña"?></td>
+			<td> <?php echo "Imagen"?></td>
+			<td> <?php echo "Status"?></td>
+			<td> <?php echo "Tipo"?></td>
+			<td> <?php echo "Creado en"?></td>
+			<td><a href="V_formUser.php" class="button" role ="button">Nuevo Usuario</a><p> </p> <a href="V_Dashboard.php" class="button">Volver</a></td>
+		</tr>    		
+		</thead>
+		<tbody>
+			<tr>
+			<?php while ($row = $resultado->fetch_assoc()) {
+            $id = $row['id'];?>
+            
+				<td><?php echo $row['id']?></td>
+				<td><?php echo $row['name']?></td>
+				<td><?php echo $row['lastname']?></td>
+				<td><?php echo $row['username']?></td>
+				<td><?php echo $row['email']?></td>
+				<td><?php echo $row['password']?></td>
+				<td><?php echo $row['image']?></td>
+				<td><?php echo $row['status']?></td>
+				<td><?php echo $row['kind']?></td>
+				<td><?php echo $row['created_at']?></td>
+				<td><?php echo "<button onclick=\"location.href='../System/C_DeleteUser.php?id=$id'\">Borrar</button> " . " <button onclick=\"location.href='V_formUser.php?id=$id'\">Editar</button>" ?></td>
+			</tr>
+			<?php }?>
+		</tbody>
+	</table>
+	<!--  <a href="V_formUser.php" class="button">Crear Usuario</a>
 	<a href="V_Dashboard.php" class="button">Volver</a>
+	-->
+	<?php $mysqli->close(); ?>
+	<br>
 </body>
 </html>
 
