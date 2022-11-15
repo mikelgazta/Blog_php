@@ -2,6 +2,10 @@
 namespace System;
 use Models\Post;
 use Models\M_Post;
+session_start();
+if (! isset($_SESSION['username'])) {
+    header("Location: ../Views/V_Loginform.php");
+}else{
 require_once '../Models/Post.php';
 require_once '../Models/M_Post.php';
 
@@ -25,4 +29,5 @@ $con->close();
 
 header("Location: ../Views/V_SelectPost.php");
 exit();
+}
 ?>

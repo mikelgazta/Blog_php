@@ -6,6 +6,10 @@
 </style>
 <body>
 <?php
+session_start();
+if (! isset($_SESSION['username'])) {
+    header("Location: V_loginform.php");
+}else{
 if (isset($_GET['id'])) {
     $mysqli = new mysqli("localhost", "root", "", "proyecto_blog");
     if ($mysqli->connect_errno) {
@@ -32,6 +36,7 @@ if (isset($_GET['id'])) {
         echo "<br>";
         
     }
+}
 }
 ?>
 <form action=<?php echo (isset($_GET['id']) ? "'../System/C_UpdatePost.php'" : "'../System/C_InsertPost.php'") ?> method="post">

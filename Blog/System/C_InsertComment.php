@@ -2,6 +2,10 @@
 
 use Models\M_Comment;
 use Models\Comment;
+session_start();
+if (! isset($_SESSION['username'])) {
+    header("Location: ../Views/V_Loginform.php");
+}else{
 require_once '../Models/Comment.php';
 require_once '../Models/M_Comment.php';
 
@@ -24,4 +28,5 @@ $con->close();
 
 header("Location: ../Views/V_SelectComment.php");
 exit();
+}
 ?>

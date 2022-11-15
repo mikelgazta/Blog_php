@@ -3,6 +3,12 @@ namespace System;
 
 use Models\M_User;
 use Models\User;
+
+session_start();
+if (! isset($_SESSION['username'])) {
+    header("Location: ../Views/V_Loginform.php");
+}else{
+   
 require_once '../Models/User.php';
 require_once '../Models/M_user.php';
 
@@ -26,4 +32,5 @@ $con->close();
 
 header("Location: ../Views/V_SelectUser.php");
 exit();
+}
 ?>

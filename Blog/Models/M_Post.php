@@ -7,6 +7,19 @@ require_once 'Post.php';
 
 class M_Post extends Conexion{
     
+    public function myPosts($username)
+    {
+        $query = parent::con()->query('SELECT * FROM post, user WHERE post.user_id=user.id and username = username');
+        
+        $entrada = [];
+        
+        while ($row = $query->fetch_assoc()) {
+            // todo
+            $entrada[] = new Post($row['id'], $row['title'], $row['brief'], $row['content'], $row['image'], $row['created_at'], $row['status'], $row['user_id']);
+        }
+        
+        return $entrada;
+    }
     
     public function getPosts()
     {
