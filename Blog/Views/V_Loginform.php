@@ -10,15 +10,17 @@
 </head>
 
 <body>
+<div class="contenedor-form">
     <form action="../System/C_Login.php" method="post">
     	<h1>Bienvenido al blog del trio calavera</h1>
         <label for="username">Usuario:</label>
         <input type="text" id="user" name="username"><br><br>
-        <label for="password">Contraseña:</label>
+        <label for="password">Pass:</label>
         <input type="password" id="pass" name="password"><br><br>
         <input type="submit" value="Iniciar Sesión">
-        <input type="reset" value="Borrar">
+        <input type="reset" value="Restablecer">
     </form>
+ </div>
 </body>
 
 </html>

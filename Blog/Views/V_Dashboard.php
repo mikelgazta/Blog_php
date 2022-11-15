@@ -24,7 +24,7 @@ if (! isset($_SESSION['username'])) {
 </head>
 <body>
 	<h1 align="center">Plaiaundi Blog</h1>
-	<h3 align="center">Bienvenido <?=$_SESSION['username']?></h3>
+	<h2 align="center">Bienvenido <?=$_SESSION['username']?></h2>
 	<h3 align="center">Estos son los posts actuales:</h3>
 	   	<table class="styled-table">
 		<thead>	
@@ -57,10 +57,11 @@ if (! isset($_SESSION['username'])) {
 	</table>
 	<?php $mysqli->close();
 ?>
+	<div class="botones">
 		<button onclick="location.href='../Views/V_SelectUser.php'">Crear Usuario</button>
 		<button onclick="location.href='../Views/V_SelectPost.php'">Crear Post</button>
 		<button onclick="location.href='../Views/V_SelectComment.php'">Crear Comentario</button>
 		<button onclick="location.href='../System/C_Logout.php'">Logout</button>
-		
+	</div>
 </body>
 </html>

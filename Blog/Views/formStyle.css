@@ -1,5 +1,16 @@
 *{box-sizing:border-box;}
 
+body{
+	background-image: url("../fondo.jpg");
+}
+
+.contenedor-form{
+	height: 925px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
 form{
 	width:300px;
 	padding:16px;
